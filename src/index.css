@@ -40,8 +40,9 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
 }
 
+
 p.recipe{
-  white-space:pre;
+  white-space:pre-wrap;
 }
 
 .recipe-summary {
