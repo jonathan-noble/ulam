@@ -14,18 +14,17 @@ const createNotification = (notification) => {
     })
 };
 
-exports.projectCreated = functions.firestore
-    .document('project/{projectId}')
+exports.recipeCreated = functions.firestore
+    .document('recipes/{recipeId}')
     .onCreate(doc => {
         
-        const project = doc.data();
-
-        console.log(project);
+        const recipe = doc.data();
+        const recipeId = doc.id;
         const notification = {
-            content: 'Added a new project',
-            user: `${project.authorFirstName} ${project.authorLastName}`,
+            content: 'added a new recipe',
+            user: `${recipe.authorFirstName} ${recipe.authorLastName}`,
             time: admin.firestore.FieldValue.serverTimestamp(),
-            // projectId: `${project.projectId}`
+            recipeId: recipeId
         }
 
         return createNotification(notification);
@@ -39,7 +38,7 @@ exports.userJoined = functions.auth.user()
             .doc(user.uid).get().then(doc => {
                 const newUser = doc.data();
                 const notification = {
-                    content: 'Joined the party',
+                    content: 'joined the party!',
                     user: `${newUser.firstName} ${newUser.lastName}`,
                     time: admin.firestore.FieldValue.serverTimestamp()
                 }

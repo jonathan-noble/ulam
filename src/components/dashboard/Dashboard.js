@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Notifications from './Notifications';
-import ProjectList from '../projects/ProjectList';
+import RecipeList from '../recipes/RecipeList';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom';
 class Dashboard extends Component {
     render() {
 
-        const { projects, auth, notifications } = this.props;
+        const { recipes, auth, notifications } = this.props;
 
         if(!auth.uid) return <Redirect to='/signin'/>
         
@@ -18,7 +18,7 @@ class Dashboard extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m6">
-                        <ProjectList projects={projects} />
+                        <RecipeList recipes={recipes} />
                     </div>
 
                     <div className="col s12 m5 offset-m1">
@@ -33,7 +33,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        projects: state.firestore.ordered.project,
+        recipes: state.firestore.ordered.recipes,
         auth: state.firebase.auth,
         notifications: state.firestore.ordered.notifications
     }
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'project', orderBy: ['createdAt', 'desc']},
+        {collection: 'recipes', orderBy: ['createdAt', 'desc']},
         {collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
     ])
 

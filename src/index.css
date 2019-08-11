@@ -9,7 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(/img/ph-bg.jpeg) no-repeat;
+  background: url(/img/food-bg.jpg) no-repeat;
   background-size: 100%;
   background-position: bottom;
   background-color: #ffffff;
@@ -38,4 +38,16 @@ textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
+}
+
+p.recipe{
+  white-space:pre;
+}
+
+.recipe-summary {
+  padding-left: 15px;
+}
+
+.recipe-details {
+  padding: 15px;
 }

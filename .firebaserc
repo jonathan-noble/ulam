@@ -1,5 +1,8 @@
 {
+  "recipes": {
+    "default": "ulam-9603e"
+  },
   "projects": {
-    "default": "pet-hotel-6fb5d"
+    "default": "ulam-9603e"
   }
 }
